@@ -17,14 +17,10 @@ export class MessagesComponent implements OnInit {
   }
   sendMsg(){
 
-    let i =Math.floor(Math.random()*10);
-    console.log(i);
     if(this.msg!==''){
     console.log(this.msg);
-    sessionStorage.setItem("message",this.msg);
+    localStorage.setItem("message",JSON.stringify(this.msg));
     this.messages.push(this.msg,this.time);
-    // this.messages.push(this.msgArray[i]);
-    // this.m.push(this.msgArray[i]);
     this.msg='';
   }
     

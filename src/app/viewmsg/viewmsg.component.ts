@@ -17,7 +17,8 @@ fromYou: boolean;
   styleUrls: ['./viewmsg.component.css']
 })
 export class ViewmsgComponent implements OnInit {
-  message:any='';
+   message:any='';
+  // message: any=[];
   sendArray:(string|number)[] =["Hi","Hope u r good","Awesome","Nice","Have a grt Day","Wonderful","Cold there?","Is it raining?","Are u free now?","How do you do?","What is you name?"];
   msgarray:any=[];
 
@@ -25,8 +26,9 @@ export class ViewmsgComponent implements OnInit {
 
   ngOnInit(): void {
     
-    setInterval(()=>{
-      this.message=sessionStorage.getItem('message');
+    // setInterval(()=>{
+      // this.message= localStorage.getItem('message');
+     this.message= JSON.parse(JSON.stringify(localStorage.getItem('message'))||"[]");
       if(this.message){
         let msg ={
           type:'user',
@@ -42,12 +44,16 @@ export class ViewmsgComponent implements OnInit {
           sent: new Date()
         }
         this.msgarray.push(sendmsg);
-        console.log(sendmsg)
+        console.log(sendmsg);
+        localStorage.setItem("message",JSON.stringify(this.msgarray))
+        // var msgstringified = JSON.stringify(this.msgarray);
         this.message='';
-        sessionStorage.removeItem('message');
+        // localStorage.removeItem('message');
+      
         console.log(this.msgarray);
+        
       }
-    })
+    // })
 
       }
 
