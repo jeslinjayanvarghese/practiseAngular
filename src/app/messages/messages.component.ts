@@ -14,14 +14,17 @@ export class MessagesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+   
   }
   sendMsg(){
 
     if(this.msg!==''){
-    console.log(this.msg);
+
     localStorage.setItem("message",JSON.stringify(this.msg));
     this.messages.push(this.msg,this.time);
+    console.log(this.msg);
     this.msg='';
+    window.location.reload();
   }
     
   }

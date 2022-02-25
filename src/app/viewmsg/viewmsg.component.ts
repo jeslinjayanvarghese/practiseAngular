@@ -44,14 +44,19 @@ export class ViewmsgComponent implements OnInit {
           sent: new Date()
         }
         this.msgarray.push(sendmsg);
-        console.log(sendmsg);
-        localStorage.setItem("message",JSON.stringify(this.msgarray))
-        // var msgstringified = JSON.stringify(this.msgarray);
-        this.message='';
+        // console.log(sendmsg);
+        if(!localStorage.getItem("message")|| JSON.parse(localStorage.getItem('message') || '{}').length ===0){
+          localStorage.setItem("message",JSON.stringify(this.msgarray));
+
+        }
+        
+        let msgstringified = JSON.parse(localStorage.getItem("message")|| '{}');
+        
         // localStorage.removeItem('message');
       
-        console.log(this.msgarray);
-        
+        console.log(msgstringified);
+        this.message='';
+
       }
     // })
 
