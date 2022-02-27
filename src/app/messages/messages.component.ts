@@ -24,8 +24,8 @@ export class MessagesComponent implements OnInit {
     // localStorage.setItem("message",JSON.stringify(this.msg));
     // this.messages.push(this.msg);
     // console.log(this.msg);
-    // this.msg='';
-      window.location.reload();
+     this.msg='';
+     window.location.reload();
     }
     
   }

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './viewmsg.component.html',
   styleUrls: ['./viewmsg.component.css']
 })
+
 export class ViewmsgComponent implements OnInit {
   //  message:any='';
     messages: any=[];

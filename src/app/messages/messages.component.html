@@ -51,7 +51,7 @@
              </div>  -->
              <div class="chatlog" >
                 
-                 <app-viewmsg></app-viewmsg>
+                 <app-viewmsg ></app-viewmsg>
                  <!-- <app-sendmsg></app-sendmsg> -->
                 <!-- <ul *ngFor="let i of messages" class="messages">
                     <li>{{i}}
@@ -71,10 +71,17 @@
               </form> -->
             
          </div>
-        <form class="chat-input">
+
+         <footer class="s">
+            <form class="f">
+              <input [(ngModel)]="msg" name="msg"  placeholder='Enter a message' type='text' class="i">
+              <input  type='submit' value='Send' (click)="sendMsg()" class="b">
+            </form>
+          </footer>
+        <!-- <form class="chat-input">
             <input matInput type="text" [(ngModel)]="msg" class="in" name="msg"  placeholder="Enter Your Message" >
             
             <button mat-raised-button color="primary" class="btn" (click)="sendMsg()">Send</button>
-        </form>
+        </form> -->
     </mat-sidenav-content>
 </mat-sidenav-container> 

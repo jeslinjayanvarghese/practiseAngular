@@ -16,7 +16,14 @@ export class MessageService {
    
 
   //  this.messages = JSON.parse(JSON.stringify(localStorage.getItem("message"))) || [];
-   this.messages = !!localStorage.getItem("message") ? JSON.stringify((localStorage.getItem("message"))): [];
+  //  this.messages = !!localStorage.getItem("message") ? JSON.stringify((localStorage.getItem("message"))): [];
+  this.messages = this.getmsg();
+  if(this.messages){
+    this.messages = JSON.parse(this.messages);
+  }
+  else{
+    this.messages=[];
+  }
   
     let msg ={
       type:'user',
