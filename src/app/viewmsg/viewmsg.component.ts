@@ -1,6 +1,5 @@
 import { MessageService } from './../message.service';
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-viewmsg',
@@ -14,9 +13,17 @@ export class ViewmsgComponent implements OnInit {
   constructor(private MessageService: MessageService) {}
 
   ngOnInit(): void {
-    this.messages = this.MessageService.getmsg();
-    this.messages = JSON.parse(this.messages);
+    if ((this.messages = [])) {
+      this.messages = this.MessageService.getmsg();
+      this.messages = JSON.parse(this.messages);
+    } else {
+      this.messages = JSON.parse(this.messages);
+    }
   }
-  
-  
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['messages']) {
+      // Do your logic here
+      this.ngOnInit();
+    }
+  }
 }

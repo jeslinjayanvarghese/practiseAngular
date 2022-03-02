@@ -20,16 +20,9 @@ export class MessageService {
     'What is you name?',
   ];
 
- 
-  
-
   msgsend(event: any) {
-
-    
     this.messages = this.getmsg();
-    console.log(this.messages)
     let botMsg = Math.floor(Math.random() * this.botMessageArray.length);
-
 
     if (this.messages) {
       this.messages = JSON.parse(this.messages);
@@ -49,13 +42,13 @@ export class MessageService {
     };
     this.messages.push(sendmsg);
     this.savemsg();
-    console.log(this.messages)
+    console.log(this.messages);
   }
 
   getmsg() {
     return localStorage.getItem('messages');
   }
-  savemsg(){
+  savemsg() {
     localStorage.setItem('messages', JSON.stringify(this.messages));
-}
+  }
 }

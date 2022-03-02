@@ -10,19 +10,23 @@ import { Output, EventEmitter } from '@angular/core';
 export class InputComponent implements OnInit {
   @Output() sendData = new EventEmitter<any>();
   msg:any='';
+  messages:any =[];
   constructor(private msgService:MessageService) { }
 
   ngOnInit(): void {
   }
   sendMsg(){
     if(this.msg!==''){    
-    this.sendData.emit(this.msg);
+    // this.sendData.emit(this.msg);
     this.msgService.msgsend(this.msg);
     console.log(this.msg);
     this.msg='';
-    //  window.location.reload();
+    this.getMsg();
     }
-    
+  }
+  getMsg(){
+    this.messages = this.msgService.getmsg();
+    this.sendData.emit(this.messages);
   }
 
 }
