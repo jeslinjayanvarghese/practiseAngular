@@ -1,38 +1,26 @@
-<!-- <div class="chatarea"> -->
-    <!-- <div class="chatmsgs"> -->
-       <div *ngFor="let i of messages">
-        <div *ngIf="i.type=='user'">
-        <div class="container" >
-          
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQzw9S0xe56u-U0v9mhB8uQ4WwQ6HXDLFpDhkGPDQ9dPe3JmMmTXz8UVJt9obNLOwjwmE&usqp=CAU" alt="Avatar">
-            <p>{{i.message}}</p>
-            <span class="time-right">{{i.sent| date: 'shortTime'}}</span>
-            
-          </div>
-        </div>
-          
-          <div *ngIf="i.type=='sender'">
-          <div class="container darker">
-            
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzIe1staxBN6YGg07vkfR1Cs3g9R4D5bu44paRDxnGh8mQwQOPuN507ySniEG1RbgI9nI&usqp=CAU" alt="Avatar" class="right">
-            <p>{{i.message}}</p>
-            <span class="time-left">{{i.sent| date: 'shortTime'}}</span>
-     
-        </div>
+<!-- <div style="text-align:center;margin: 10px;">{{ welcome }}</div> -->
+{{messages}}
+<div *ngFor="let msg of messages">
+  <div *ngIf="msg.type == 'user'">
+    <div class="container">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQzw9S0xe56u-U0v9mhB8uQ4WwQ6HXDLFpDhkGPDQ9dPe3JmMmTXz8UVJt9obNLOwjwmE&usqp=CAU"
+        alt="Avatar"
+      />
+      <p>{{ msg.message }}</p>
+      <span class="time-right">{{ msg.sent | date: "shortTime" }}</span>
     </div>
-        <!-- <div class="msgitem" *ngFor="let i of msgarray" >
-            <span class="msgtime">{{i.sent| date: 'shortTime'}}</span>
-            <div class="user">
-                <strong></strong><br>{{i.message}}
-            </div>
-        </div> -->
-        <!-- <div class="msgitem" *ngFor="let msg of msgarray" [ngClass]="{'msgitem--u':msg.fromYou}">
-            <span class="msgtime">{{msg.sent| date: 'shortTime'}}</span>
-            <div class="user">
-                <strong>{{msg.user.name}}</strong><br>{{msg.text}}
-            </div>
-        </div> -->
-        
-    <!-- </div> -->
+  </div>
 
-<!-- </div> -->
+  <div *ngIf="msg.type == 'sender'">
+    <div class="container darker">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzIe1staxBN6YGg07vkfR1Cs3g9R4D5bu44paRDxnGh8mQwQOPuN507ySniEG1RbgI9nI&usqp=CAU"
+        alt="Avatar"
+        class="right"
+      />
+      <p>{{ msg.message }}</p>
+      <span class="time-left">{{ msg.sent | date: "shortTime" }}</span>
+    </div>
+  </div>
+</div>

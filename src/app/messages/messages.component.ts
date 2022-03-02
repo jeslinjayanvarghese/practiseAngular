@@ -4,29 +4,19 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css']
+  styleUrls: ['./messages.component.css'],
 })
 export class MessagesComponent implements OnInit {
-  msg:any='';
-  // messages:any = [];
+  msg: any[] = [];
+  // note: any = 'Chat with ur ChatBot';
+  constructor(private msgService: MessageService) {}
 
-  constructor(private msgService: MessageService) { }
-
-  ngOnInit(): void {  
+  ngOnInit(): void {
+    this.msgService.getmsg();
   }
-  sendMsg(){
-
-    if(this.msg!==''){    
-
-    this.msgService.msgsend(this.msg);
+  handleSendData(event: any) {
+    this.msg = event;
     console.log(this.msg);
-
-    // localStorage.setItem("message",JSON.stringify(this.msg));
-    // this.messages.push(this.msg);
-    // console.log(this.msg);
-     this.msg='';
-     window.location.reload();
-    }
-    
+    // this.msg = [];
   }
 }

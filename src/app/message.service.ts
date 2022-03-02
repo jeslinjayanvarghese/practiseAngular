@@ -1,61 +1,61 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MessageService {
+  constructor() {}
+  messages: any = [];
+  botMessageArray: string[] = [
+    'Hi',
+    'Hope u r good',
+    'Awesome',
+    'Nice',
+    'Have a grt Day',
+    'Wonderful',
+    'Cold there?',
+    'Is it raining?',
+    'Are u free now?',
+    'How do you do?',
+    'What is you name?',
+  ];
 
-  constructor() { }
-
-  messages:any=[];
-  // messages:Array<{type:any,message:any,sent:any}> = [];
-  sendArray:(string)[] =["Hi","Hope u r good","Awesome","Nice","Have a grt Day","Wonderful","Cold there?","Is it raining?","Are u free now?","How do you do?","What is you name?"];
+ 
   
-  msgsend(msgs:any){
 
-   
+  msgsend(event: any) {
 
-  //  this.messages = JSON.parse(JSON.stringify(localStorage.getItem("message"))) || [];
-  //  this.messages = !!localStorage.getItem("message") ? JSON.stringify((localStorage.getItem("message"))): [];
-  this.messages = this.getmsg();
-  if(this.messages){
-    this.messages = JSON.parse(this.messages);
-  }
-  else{
-    this.messages=[];
-  }
-  
-    let msg ={
-      type:'user',
-      message: msgs,
-      sent: new Date()
+    
+    this.messages = this.getmsg();
+    console.log(this.messages)
+    let botMsg = Math.floor(Math.random() * this.botMessageArray.length);
+
+
+    if (this.messages) {
+      this.messages = JSON.parse(this.messages);
+    } else {
+      this.messages = [];
     }
-    console.log(msg);
-    console.log(this.messages);
-     this.messages.push(msg)
-  // this.messages[this.messages.length]=msg;
+    let mymsg = {
+      type: 'user',
+      message: event,
+      sent: new Date(),
+    };
+    this.messages.push(mymsg);
+    let sendmsg = {
+      type: 'sender',
+      message: this.botMessageArray[botMsg],
+      sent: new Date(),
+    };
+    this.messages.push(sendmsg);
+    this.savemsg();
+    console.log(this.messages)
+  }
 
-console.log(this.messages);
-
-    //to randomly select the sendArray messages
-    let i =Math.floor(Math.random()*10);
-    console.log(i);
-
-    let sendmsg={
-      type:'sender',
-      message: this.sendArray[i],
-      sent: new Date()
-    }
-     this.messages.push(sendmsg);
-    // this.messages[this.messages.length]=sendmsg;
-    console.log(this.messages);
-
-     localStorage.setItem("messages",JSON.stringify(this.messages));
-    // localStorage['messages'] = JSON.stringify(this.messages);
+  getmsg() {
+    return localStorage.getItem('messages');
+  }
+  savemsg(){
+    localStorage.setItem('messages', JSON.stringify(this.messages));
 }
-
-getmsg(){
-  return localStorage.getItem("messages");
-}
-
 }

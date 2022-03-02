@@ -8,6 +8,8 @@ import { MessagesModule } from './messages/messages.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
+
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule} from '@angular/material/form-field';
 
@@ -16,9 +18,10 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
