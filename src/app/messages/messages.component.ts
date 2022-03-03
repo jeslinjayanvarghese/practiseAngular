@@ -1,3 +1,4 @@
+import { DbService } from './../services/db/db.service';
 import { MessageService } from './../message.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,16 +8,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.component.css'],
 })
 export class MessagesComponent implements OnInit {
-  msg: any[] = [];
-  // note: any = 'Chat with ur ChatBot';
-  constructor(private msgService: MessageService) {}
+  allmessages: any = [];
+  botMessageArray: string[] = [
+    'Hi',
+    'Hope u r good',
+    'Awesome',
+    'Nice',
+    'Have a grt Day',
+    'Wonderful',
+    'Cold there?',
+    'Is it raining?',
+    'Are u free now?',
+    'How do you do?',
+    'What is you name?',
+  ];
+  constructor(private DbService:DbService) {}
 
   ngOnInit(): void {
-    this.msgService.getmsg();
+   this.allmessages = this.DbService.getMessages();
   }
-  handleSendData(event: any) {
-    this.msg = event;
-    console.log(this.msg);
-    // this.msg = [];
+
+  handleSendData(usermsg: any) {
+    let botMsg = Math.floor(Math.random() * this.botMessageArray.length);
+    let mymsg = {
+      type: 'user',
+      message: usermsg,
+      sent: new Date(),
+    };
+    this.allmessages.push(mymsg);
+    let sendmsg = {
+      type: 'sender',
+      message: this.botMessageArray[botMsg],
+      sent: new Date(),
+    };
+    this.allmessages.push(sendmsg);
+    this.DbService.saveMessages(this.allmessages);
+
   }
 }

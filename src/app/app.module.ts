@@ -1,12 +1,15 @@
+import { DbService } from './services/db/db.service';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+
 
 import { MessagesModule } from './messages/messages.module';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MessageService } from './message.service';
 
 
 
@@ -19,9 +22,11 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
     MessagesModule
   ],
   exports: [],
-  providers: [],
+  providers: [MessageService,DbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

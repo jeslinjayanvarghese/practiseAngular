@@ -7,7 +7,7 @@
     <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
-  Responsive side navigation
+  Welcome to ChatApp
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -43,10 +43,11 @@
     </button>
   </mat-sidenav>
   <mat-sidenav-content>
-    <!-- {{msg}} -->
     <div class="content mat-elevation-z8">
       <div class="chatlog">
-        <app-viewmsg [messages]="msg"></app-viewmsg>
+        <div *ngFor="let msg of allmessages">
+          <app-viewmsg [msg]="msg"></app-viewmsg>
+        </div>
       </div>
     </div>
     <app-input (sendData)="handleSendData($event)"></app-input>

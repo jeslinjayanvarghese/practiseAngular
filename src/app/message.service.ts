@@ -20,7 +20,7 @@ export class MessageService {
     'What is you name?',
   ];
 
-  msgsend(event: any) {
+  msgsend(usermsg: any) {
     this.messages = this.getmsg();
     let botMsg = Math.floor(Math.random() * this.botMessageArray.length);
 
@@ -31,7 +31,7 @@ export class MessageService {
     }
     let mymsg = {
       type: 'user',
-      message: event,
+      message: usermsg,
       sent: new Date(),
     };
     this.messages.push(mymsg);
@@ -42,7 +42,6 @@ export class MessageService {
     };
     this.messages.push(sendmsg);
     this.savemsg();
-    console.log(this.messages);
   }
 
   getmsg() {
