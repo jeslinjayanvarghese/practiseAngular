@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,16 +6,17 @@ import { Injectable } from '@angular/core';
 })
 export class DbService {
 
-  constructor() { }
+  constructor(private cookie:CookieService) { }
   
   getMessages(){
-    let msgStr =  localStorage.getItem('messages');
+    let msgStr = this.cookie.get('messages');
     let messages = JSON.parse(msgStr?msgStr:'[]');
     return messages;
   }
 
   saveMessages(messages:any){
     let msgstringified = JSON.stringify(messages);
-    localStorage.setItem('messages',msgstringified);
+    this.cookie.set('messages', msgstringified, { expires: 2, sameSite: 'Lax' });
   }
+
 }

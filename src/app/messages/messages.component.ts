@@ -25,7 +25,7 @@ export class MessagesComponent implements OnInit {
   constructor(private DbService:DbService) {}
 
   ngOnInit(): void {
-   this.allmessages = this.DbService.getMessages();
+    this.allmessages =this.DbService.getMessages();
   }
 
   handleSendData(usermsg: any) {

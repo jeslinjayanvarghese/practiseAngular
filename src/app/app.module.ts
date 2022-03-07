@@ -10,17 +10,12 @@ import { MessagesModule } from './messages/messages.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageService } from './message.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule} from '@angular/material/form-field';
-
-
-
-
-
-
 
 
 @NgModule({
@@ -35,7 +30,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
     MessagesModule
   ],
   exports: [],
-  providers: [MessageService,DbService],
+  providers: [MessageService,DbService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
