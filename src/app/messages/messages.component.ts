@@ -1,32 +1,29 @@
+import { DbService } from './../services/db/db.service';
 import { MessageService } from './../message.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css']
+  styleUrls: ['./messages.component.css'],
 })
 export class MessagesComponent implements OnInit {
-  msg:any='';
-  // messages:any = [];
+  allmessages: any = [];
 
-  constructor(private msgService: MessageService) { }
+  constructor(private DbService:DbService,private MsgService: MessageService) {}
 
-  ngOnInit(): void {  
+  ngOnInit(): void {
+    this.allmessages =this.DbService.getMessages();
   }
-  sendMsg(){
 
-    if(this.msg!==''){    
+  
+  handleSendData(usermsg: any) {
+    this.MsgService.msgsend(usermsg);
+    this.getMessage();
+  }
 
-    this.msgService.msgsend(this.msg);
-    console.log(this.msg);
 
-    // localStorage.setItem("message",JSON.stringify(this.msg));
-    // this.messages.push(this.msg);
-    // console.log(this.msg);
-     this.msg='';
-     window.location.reload();
-    }
-    
+  getMessage(){
+    this.allmessages = this.DbService.getMessages();
   }
 }

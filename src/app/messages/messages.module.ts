@@ -1,8 +1,8 @@
+
 import { NgModule } from '@angular/core';
-// import { FormsModule } from '@angular/forms';
-// import { MatFormFieldModule} from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { MessagesComponent } from './messages.component';
+import { InputComponent } from '../input/input.component';
 import { ViewmsgComponent } from '../viewmsg/viewmsg.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -16,14 +16,11 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatDividerModule} from '@angular/material/divider';
 
 
-
-
-
-
 @NgModule({
   declarations: [
     ViewmsgComponent,
-    MessagesComponent
+    MessagesComponent,
+    InputComponent
   ],
   imports: [
     CommonModule,
