@@ -10,10 +10,13 @@ import { Output, EventEmitter } from '@angular/core';
 export class InputComponent implements OnInit {
   @Output() sendData = new EventEmitter<any>();
   msg:any='';
+  
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
   sendMsg(){
     if(this.msg!==''){    
     this.sendData.emit(this.msg);
