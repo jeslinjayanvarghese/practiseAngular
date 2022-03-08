@@ -1,5 +1,5 @@
 
-  .s{
+  .section-input{
     position: fixed;
     bottom: 0;
     height: 12%;
@@ -8,7 +8,7 @@
     align-items: center;
     border-top: 1px solid #e0e9ec;
   }
-  .i{
+  .input-text{
     border: none;
     background: transparent;
     padding: 0.8em;
@@ -16,7 +16,7 @@
     color: rgb(31, 23, 23);
     width: 100%;
   }
-  .b{
+  .send-btn{
     background: #110861;
     color: #fff;
     width: 17%;
@@ -29,7 +29,7 @@
        -moz-appearance: none;
             appearance: none;
   }
-  .f{
+  .form-input{
     width: 100%;
     display: flex;
     justify-content: space-between;

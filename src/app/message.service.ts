@@ -1,11 +1,12 @@
+import { DbService } from './services/db/db.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessageService {
-  constructor() {}
-  messages: any = [];
+  constructor(private DbService: DbService) {}
+  allmessages: any = [];
   botMessageArray: string[] = [
     'Hi',
     'Hope u r good',
@@ -21,33 +22,21 @@ export class MessageService {
   ];
 
   msgsend(usermsg: any) {
-    this.messages = this.getmsg();
-    let botMsg = Math.floor(Math.random() * this.botMessageArray.length);
-
-    if (this.messages) {
-      this.messages = JSON.parse(this.messages);
-    } else {
-      this.messages = [];
-    }
+  this.allmessages = this.DbService.getMessages();
+   let botMsg = Math.floor(Math.random() * this.botMessageArray.length);
     let mymsg = {
       type: 'user',
       message: usermsg,
       sent: new Date(),
     };
-    this.messages.push(mymsg);
+    this.allmessages.push(mymsg);
     let sendmsg = {
       type: 'sender',
       message: this.botMessageArray[botMsg],
       sent: new Date(),
     };
-    this.messages.push(sendmsg);
-    this.savemsg();
+    this.allmessages.push(sendmsg);
+    this.DbService.saveMessages(this.allmessages);
   }
 
-  getmsg() {
-    return localStorage.getItem('messages');
-  }
-  savemsg() {
-    localStorage.setItem('messages', JSON.stringify(this.messages));
-  }
 }
