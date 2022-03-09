@@ -10,8 +10,6 @@ import * as momenttz from 'moment-timezone';
 export class ClockComponent implements OnInit {
 
   constructor() { }
-  // todayDate:any = moment().format('M/D/YYYY');
-  // todayDate = new Date();
   local:any='';
   ist:any=';'
   uk:any='';
