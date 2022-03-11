@@ -19,4 +19,15 @@ export class DbService {
     this.cookie.set('messages', msgstringified, { expires: 2, sameSite: 'Lax' });
   }
 
+  getUser(){
+    let userData = this.cookie.get('user');
+    let users = JSON.parse(userData?userData:'[]');
+    return users;
+  }
+
+  saveUser(user:any){
+    let userstringified = JSON.stringify(user);
+    this.cookie.set('user', userstringified, { expires: 2, sameSite: 'Lax' });
+  }
+
 }

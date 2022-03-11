@@ -1,0 +1,39 @@
+
+
+<mat-card>
+    <button mat-raised-button color="primary" routerLink="addUser">Add New User</button>
+</mat-card>
+
+<router-outlet></router-outlet>
+
+<div class="card-wrapper">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <img
+          src="https://www.kindpng.com/picc/m/24-248729_stockvader-predicted-adig-user-profile-image-png-transparent.png"
+          mat-card-avatar />
+        <mat-card-title>User</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua.
+        </p> -->
+        
+        <mat-list role="list">
+         Name: <mat-list-item role="listitem" placeholder="Name:">Angular 12 Tutorials</mat-list-item>
+         Email: <mat-list-item role="listitem">React 17 Tutorials</mat-list-item>
+         Age: <mat-list-item role="listitem">Ionic 5 Tutorials</mat-list-item>
+        </mat-list>
+        
+      </mat-card-content>
+  
+      <mat-card-actions>
+        <button mat-raised-button color="accent" routerLink="editUser">Edit</button>
+        <button mat-raised-button color="warn">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  
+  </div>
+  
+

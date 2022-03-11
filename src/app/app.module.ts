@@ -24,6 +24,16 @@ import { MatSidenavModule  } from '@angular/material/sidenav';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule} from '@angular/material/icon';
 import { MatDividerModule} from '@angular/material/divider';
+import { ProfileComponent } from './profile/profile.component';
+
+
+import { MatCardModule } from "@angular/material/card";
+import {MatListModule} from '@angular/material/list';
+import { AddUserComponent } from './add-user/add-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -32,11 +42,15 @@ import { MatDividerModule} from '@angular/material/divider';
     ViewmsgComponent,
     MessagesComponent,
     InputComponent,
-    ClockComponent
+    ClockComponent,
+    ProfileComponent,
+    AddUserComponent,
+    EditUserComponent
 
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule ,
     AppRoutingModule,
     CommonModule,
     BrowserAnimationsModule,
@@ -45,6 +59,8 @@ import { MatDividerModule} from '@angular/material/divider';
     MatToolbarModule,
     MatIconModule,
     MatDividerModule,
+    MatCardModule,
+    MatListModule,
     MatFormFieldModule,
     HttpClientModule,
     FormsModule,
