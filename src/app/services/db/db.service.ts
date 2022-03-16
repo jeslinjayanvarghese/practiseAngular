@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,11 @@ export class DbService {
   user:any=[];
   
   constructor(private cookie:CookieService) {   }
+  private _refreshNeeded$ = new Subject<void>();
+
+  get refreshNeeded$(){
+    return this._refreshNeeded$;
+  }
   
   getMessages(){
     let msgStr = this.cookie.get('messages');
@@ -56,6 +63,10 @@ export class DbService {
     }
     let userstringified = JSON.stringify(this.user);
     this.cookie.set('user', userstringified, { expires: 2, sameSite: 'Lax' });
+    return this.user.tap(this._refreshNeeded$.next());
+    // return this.user.pipe(tap()=>{this._refreshNeeded$.next()});
+      
+    
   }
 
 }
