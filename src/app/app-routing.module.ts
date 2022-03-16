@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { AddUserComponent } from './add-user/add-user.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
+import { ViewUserComponent } from './view-user/view-user.component';
 
 const routes: Routes = [
   {
@@ -26,9 +26,14 @@ const routes: Routes = [
         component: AddUserComponent,
       },
       {
-        path: 'editUser',
-        component: EditUserComponent,
+        path: 'editUser/:id',
+        component: AddUserComponent,
       },
+      {
+        path:  '',
+        component: ViewUserComponent,
+      },
+
     ],
 
    },

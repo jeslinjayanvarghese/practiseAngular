@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
 
@@ -5,8 +6,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DbService {
-
-  constructor(private cookie:CookieService) { }
+  user:any=[];
+  
+  constructor(private cookie:CookieService) {   }
   
   getMessages(){
     let msgStr = this.cookie.get('messages');
@@ -19,14 +21,40 @@ export class DbService {
     this.cookie.set('messages', msgstringified, { expires: 2, sameSite: 'Lax' });
   }
 
-  getUser(){
+  getUsers(){
     let userData = this.cookie.get('user');
     let users = JSON.parse(userData?userData:'[]');
-    return users;
+    return users; 
   }
 
-  saveUser(user:any){
-    let userstringified = JSON.stringify(user);
+  getUser(id:any){
+    let userData = this.cookie.get('user');
+    let users = JSON.parse(userData?userData:'[]');
+    return users[id];
+  }
+
+  saveUser(userDetails:any){
+    this.user =this.getUsers();
+    this.user.push(userDetails);
+    let userstringified = JSON.stringify(this.user);
+    this.cookie.set('user', userstringified, { expires: 2, sameSite: 'Lax' });
+    this.getUsers();
+  }
+
+  updateUser(userDetails:any, index:number){
+    this.user[index]=userDetails;
+    let userstringified = JSON.stringify(this.user);
+    this.cookie.set('user', userstringified, { expires: 2, sameSite: 'Lax' });
+  }
+
+
+  removeUser(index:number){
+    this.user = this.getUsers();
+    if (index>-1) {
+      let result = this.user.splice(index,1);
+      console.log(result);
+    }
+    let userstringified = JSON.stringify(this.user);
     this.cookie.set('user', userstringified, { expires: 2, sameSite: 'Lax' });
   }
 

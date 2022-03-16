@@ -1,51 +1,72 @@
 import { DbService } from './../services/db/db.service';
-import { MatIconModule } from '@angular/material/icon';
-import { UserDataService } from './../user-data.service';
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl,Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  styleUrls: ['./add-user.component.css'],
 })
 export class AddUserComponent implements OnInit {
-
-  constructor(private userService: UserDataService,private db:DbService) { }
-  userDetails:any [] = this.db.getUser();
+  addUserForm: FormGroup;
+  editUserForm: any;
+  user: any = [];
+  id: string = '';
+  userData: any = [];
+  userUpdatedData: any = [];
+  userDetails: any = [];
+  constructor(
+    private db: DbService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.addUserForm = new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[a-zA-Z]+$'),
+        Validators.minLength(4),
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z-]+\\.[a-z]{2,4}$'),
+      ]),
+      age: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(2),
+        Validators.pattern('[0-9]+$'),
+      ]),
+    });
+  }
 
   ngOnInit(): void {
-    this.userDetails=this.db.getUser();
-    console.log(this.userDetails)
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    this.user = this.db.getUser(this.id);
+    this.addUserForm.patchValue(this.user);
   }
 
-  addUserForm = new FormGroup({
-    id:new FormControl([0]),
-    name: new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z]+$'),Validators.minLength(4)]),
-    email: new FormControl('',[Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z-]+\\.[a-z]{2,4}$')]),
-    age: new FormControl('',[Validators.required,Validators.maxLength(2),Validators.pattern('[0-9]+$')])
-  })
-
-  newUser(){
-    console.log(this.addUserForm.value);
-    alert("New User Added Successfully");
+  //adding a new user and update
+  newUser() {
     this.userDetails = this.addUserForm.value;
-    this.db.saveUser(this.userDetails);
-    // this.addUserForm.reset();
+    if (this.id) {
+      this.db.updateUser(this.userDetails, +this.id);
+    } else {
+      this.db.saveUser(this.userDetails);
+      alert('New User Added Successfully');
+    }
+    this.router.navigate(['/profile']);
   }
 
-  get name(){
+  get name() {
     return this.addUserForm.get('name');
   }
 
-  get email(){
+  get email() {
     return this.addUserForm.get('email');
   }
 
-  get age(){
+  get age() {
     return this.addUserForm.get('age');
   }
-
-
-
 }

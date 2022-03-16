@@ -30,9 +30,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { MatCardModule } from "@angular/material/card";
 import {MatListModule} from '@angular/material/list';
 import { AddUserComponent } from './add-user/add-user.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
+
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewUserComponent } from './view-user/view-user.component';
 
 
 
@@ -45,7 +46,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ClockComponent,
     ProfileComponent,
     AddUserComponent,
-    EditUserComponent
+    ViewUserComponent
 
   ],
   imports: [
