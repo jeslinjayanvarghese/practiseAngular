@@ -8,8 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  allData: any = [];
-  allData$: any;
   
   constructor(private db:DbService) {}
   ngOnInit(): void {

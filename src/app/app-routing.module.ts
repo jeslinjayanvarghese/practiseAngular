@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { ViewUserComponent } from './view-user/view-user.component';
+import { ApicallComponent } from './apicall/apicall.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
     ],
 
   },
+  { path: 'api', component: ApicallComponent }
 
 ];
 

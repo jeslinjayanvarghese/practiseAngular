@@ -14,7 +14,6 @@ import { MessagesComponent} from './messages/messages.component'
 import { InputComponent } from './input/input.component';
 import { ViewmsgComponent } from './viewmsg/viewmsg.component';
 import { ClockComponent } from './clock/clock.component';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,6 +34,10 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ViewUserComponent } from './view-user/view-user.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { ApicallComponent } from './apicall/apicall.component';
+
+
 
 
 @NgModule({
@@ -46,7 +49,9 @@ import { ViewUserComponent } from './view-user/view-user.component';
     ClockComponent,
     ProfileComponent,
     AddUserComponent,
-    ViewUserComponent
+    ViewUserComponent,
+    ApicallComponent,
+
 
   ],
   imports: [

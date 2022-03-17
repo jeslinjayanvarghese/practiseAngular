@@ -57,14 +57,13 @@ export class DbService {
   removeUser(index:number){
     this.user = this.getUsers();
     if (index>-1) {
-      this.user.splice(index,1);
+      let result = this.user.splice(index,1);
     }
     let userstringified = JSON.stringify(this.user);
     this.cookie.set('user', userstringified, { expires: 2, sameSite: 'Lax' });
     this.userDataSubject.next(this.user);
   }
 
-  
   getUserDataSubject(){
     return this.userDataSubject;
   }

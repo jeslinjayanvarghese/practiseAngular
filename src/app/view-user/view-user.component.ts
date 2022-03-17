@@ -10,18 +10,16 @@ import { DbService } from './../services/db/db.service';
 })
 export class ViewUserComponent implements OnInit {
   allData: any = [];
-  allData$: any;
-  user: any;
-  i: any;
+
   constructor(private db: DbService, private router: Router) { }
-
-
 
   ngOnInit(): void {
 
+    this.db.getUsers();
     this.db.getUserDataSubject().subscribe((data)=>{
       this.allData = data;
     })
+    
   }
 
 
