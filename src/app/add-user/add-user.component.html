@@ -14,8 +14,11 @@
         <div class="form-item">
           <input type="text" name="email" formControlName="email" required />
           <label>Email:
-            <span *ngIf="email && email.invalid && email.touched" style="color: red">
-              Email is Invalid</span></label>
+            <span *ngIf="email && email.invalid && email.touched && email.errors && email.errors['required']"
+              style="color: red">
+              Email is Invalid</span>
+
+          </label>
         </div>
         <div class="form-item">
           <input type="number" name="age" formControlName="age" required />

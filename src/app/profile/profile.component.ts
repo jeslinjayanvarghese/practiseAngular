@@ -10,9 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class ProfileComponent implements OnInit {
   allData: any = [];
   allData$: any;
+  
   constructor(private db:DbService) {}
- 
-
   ngOnInit(): void {
   }
 }

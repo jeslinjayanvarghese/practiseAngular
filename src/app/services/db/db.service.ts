@@ -1,21 +1,20 @@
-import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
   user:any=[];
-  
-  constructor(private cookie:CookieService) {   }
-  private _refreshNeeded$ = new Subject<void>();
 
-  get refreshNeeded$(){
-    return this._refreshNeeded$;
-  }
+  private userDataSubject:BehaviorSubject<any>;
+  
+  constructor(private cookie:CookieService) { 
+    this.userDataSubject = new BehaviorSubject(this.getUsers());
+    }
+
   
   getMessages(){
     let msgStr = this.cookie.get('messages');
@@ -58,15 +57,16 @@ export class DbService {
   removeUser(index:number){
     this.user = this.getUsers();
     if (index>-1) {
-      let result = this.user.splice(index,1);
-      console.log(result);
+      this.user.splice(index,1);
     }
     let userstringified = JSON.stringify(this.user);
     this.cookie.set('user', userstringified, { expires: 2, sameSite: 'Lax' });
-    return this.user.tap(this._refreshNeeded$.next());
-    // return this.user.pipe(tap()=>{this._refreshNeeded$.next()});
-      
-    
+    this.userDataSubject.next(this.user);
+  }
+
+  
+  getUserDataSubject(){
+    return this.userDataSubject;
   }
 
 }

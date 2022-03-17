@@ -10,12 +10,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AddUserComponent implements OnInit {
   addUserForm: FormGroup;
-  editUserForm: any;
   user: any = [];
   id: string = '';
-  userData: any = [];
-  userUpdatedData: any = [];
   userDetails: any = [];
+  userUpdatedData: any = [];
+
   constructor(
     private db: DbService,
     private route: ActivatedRoute,

@@ -10,16 +10,13 @@ const routes: Routes = [
   {
     path: 'chats',
     component: MessagesComponent,
-    // children: [
-    //   {
-    //     path: 'clock',
-    //     component: ClockComponent,
-    //   },
-    // ],
   },
   { path: '', redirectTo: '/chats', pathMatch: 'full' },
-  {path:'clock', component:ClockComponent },
-  {path:'profile', component:ProfileComponent,
+
+  { path: 'clock', component: ClockComponent },
+
+  {
+    path: 'profile', component: ProfileComponent,
     children: [
       {
         path: 'addUser',
@@ -30,19 +27,18 @@ const routes: Routes = [
         component: AddUserComponent,
       },
       {
-        path:  '',
+        path: '',
         component: ViewUserComponent,
       },
 
     ],
 
-   },
-  // {path:'addUser', component:AddUserComponent },
-  
+  },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

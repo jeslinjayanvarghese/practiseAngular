@@ -9,13 +9,16 @@ import * as momenttz from 'moment-timezone';
 })
 export class ClockComponent implements OnInit {
 
-  constructor() { }
   local:any='';
   ist:any=';'
   uk:any='';
+
+  constructor() { }
+
   ngOnInit(): void {
     this.getLocalTime();
   }
+  
   getLocalTime(){
     this.local = moment().format('MMMM Do YYYY, h:mm:ss a')
     console.log(this.local);

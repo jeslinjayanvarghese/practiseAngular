@@ -19,12 +19,10 @@ export class ViewUserComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.db.refreshNeeded$.subscribe(() => {
-      this.allData = this.db.getUsers();
+    this.db.getUserDataSubject().subscribe((data)=>{
+      this.allData = data;
     })
-    this.allData = this.db.getUsers();
   }
-
 
 
   editUser(userDetail: any, index: number) {
@@ -34,7 +32,6 @@ export class ViewUserComponent implements OnInit {
   deleteUser(i: number) {
     this.db.removeUser(i);
     alert("User Deleted Successfully");
-    // this.ngOnInit();
   }
 
 }
