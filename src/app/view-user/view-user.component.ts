@@ -14,14 +14,10 @@ export class ViewUserComponent implements OnInit {
   constructor(private db: DbService, private router: Router) { }
 
   ngOnInit(): void {
-
-    this.db.getUsers();
     this.db.getUserDataSubject().subscribe((data)=>{
       this.allData = data;
     })
-    
   }
-
 
   editUser(userDetail: any, index: number) {
     this.router.navigate(['/profile/editUser/' + index]);
