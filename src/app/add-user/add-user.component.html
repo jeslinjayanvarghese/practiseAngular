@@ -4,7 +4,7 @@
       <h2>User Details</h2>
     </div>
     <div class="contact-form-wrapper">
-      <form [formGroup]="addUserForm" (ngSubmit)="newUser()">
+      <form [formGroup]="addUserForm" (ngSubmit)="newUser()" method="get">
         <div class="form-item">
           <input type="text" name="sender" formControlName="name" required />
 
