@@ -36,6 +36,7 @@ import { ViewUserComponent } from './view-user/view-user.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ApicallComponent } from './apicall/apicall.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 
@@ -51,6 +52,7 @@ import { ApicallComponent } from './apicall/apicall.component';
     AddUserComponent,
     ViewUserComponent,
     ApicallComponent,
+    NotfoundComponent,
 
 
   ],
