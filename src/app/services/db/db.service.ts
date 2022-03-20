@@ -44,13 +44,14 @@ export class DbService {
     this.user.push(userDetails);
     let userstringified = JSON.stringify(this.user);
     this.cookie.set('user', userstringified, { expires: 2, sameSite: 'Lax' });
-    this.getUsers();
+    this.userDataSubject.next(this.user);
   }
 
   updateUser(userDetails:any, index:number){
     this.user[index]=userDetails;
     let userstringified = JSON.stringify(this.user);
     this.cookie.set('user', userstringified, { expires: 2, sameSite: 'Lax' });
+    this.userDataSubject.next(this.user);
   }
 
 
