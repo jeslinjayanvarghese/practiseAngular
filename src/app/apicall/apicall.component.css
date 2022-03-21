@@ -2,6 +2,7 @@
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    margin-left: 32px;
   }
   
   td, th {
@@ -12,4 +13,7 @@
   
   tr:nth-child(even) {
     background-color: #dddddd;
+  }
+  h2{
+    margin-left: 32px;
   }

@@ -2,12 +2,13 @@
 .example-card {
     max-width: 550px;
     margin: 10px;
-    }
+    margin-left: 32px;
+}
     
-    mat-card-title {
+ mat-card-title {
     color: green;
     font-size: 55px;
     justify-content: center;
     display: flex;
-    }
+}
     

@@ -1,4 +1,3 @@
-import { DbService } from './../services/db/db.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -9,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   
-  constructor(private db:DbService) {}
+  constructor() {}
   ngOnInit(): void {
   }
 }
