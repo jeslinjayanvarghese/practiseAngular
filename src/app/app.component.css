@@ -97,9 +97,7 @@ mat-divider {
 .chatlog{
  
     color: black;
-    margin: 0 12px;
-    /* margin-left: 200px; */
-    
+    margin: 0 12px;    
 }
 .example-form {
     min-width: 150px;
