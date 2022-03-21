@@ -1,3 +1,4 @@
+import{ HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { DbService } from './services/db/db.service';
 
 import { NgModule } from '@angular/core';
@@ -41,6 +42,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +76,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
     FormsModule,
   ],
   exports: [],
-  providers: [MessageService,DbService,CookieService],
+  providers: [MessageService,DbService,CookieService, {provide:LocationStrategy, useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
